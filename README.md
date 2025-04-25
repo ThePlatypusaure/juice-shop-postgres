@@ -49,8 +49,15 @@ For a detailed introduction, full list of features and architecture overview ple
 1. Install [node.js](#nodejs-version-compatibility)
 2. Run `git clone https://github.com/ThePlatypusaure/juice-shop-postgres.git --depth 1`
 3. Go into the cloned folder with `cd juice-shop-postgres`
-5. Export your database URL as an environment variable with 
-   `export DATABASE_URL="postgres://postgres:asd123@localhost:5432/mydb"`
+5. Export your database variables with 
+   ```bash
+   export DB_TYPE="postgres"
+   export DB_USER="postgres"
+   export DB_PASSWORD="asd123"
+   export DB_HOST="localhost"
+   export DB_PORT="5432"
+   export DB_NAME="mydb"
+   ```
 4. Run `npm install` (only has to be done before first start or when you change the source code)
 5. Run `npm start`
 6. Browse to <http://localhost:3000>

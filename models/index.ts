@@ -26,7 +26,14 @@ import { WalletModelInit } from './wallet'
 import { Sequelize, Transaction } from 'sequelize'
 
 /* jslint node: true */
-const dbUrl = process.env.DATABASE_URL || 'postgres://postgres:asd123@localhost:5432/mydb'
+const dbType = process.env.DB_TYPE || 'postgres';
+const dbUser = process.env.DB_USER || 'postgres';
+const dbPassword = process.env.DB_PASSWORD || 'asd123';
+const dbHost = process.env.DB_HOST || 'localhost';
+const dbPort = process.env.DB_PORT || '5432';
+const dbName = process.env.DB_NAME || 'mydb';
+
+const dbUrl = process.env.DATABASE_URL || `${dbType}://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
 const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
   quoteIdentifiers:  false,
