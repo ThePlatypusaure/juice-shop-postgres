@@ -37,11 +37,10 @@ const CardModelInit = (sequelize: Sequelize) => {
       },
       fullName: DataTypes.STRING,
       cardNum: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         validate: {
-          isInt: true,
-          min: 1000000000000000,
-          max: 9999999999999998
+          isNumeric: true,
+          len: [16, 16] // as per old 1000 0000 0000 0000 – 9999 9999 9999 9999
         }
       },
       expMonth: {

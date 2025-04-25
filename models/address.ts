@@ -42,11 +42,10 @@ const AddressModelInit = (sequelize: Sequelize) => {
         type: DataTypes.STRING
       },
       mobileNum: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         validate: {
-          isInt: true,
-          min: 1000000,
-          max: 9999999999
+          isNumeric: true,
+          len: [7, 10]    // as per old 1 000 000–9 999 999 999
         }
       },
       zipCode: {
