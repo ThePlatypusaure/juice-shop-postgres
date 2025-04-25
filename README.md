@@ -55,16 +55,6 @@ For a detailed introduction, full list of features and architecture overview ple
 5. Run `npm start`
 6. Browse to <http://localhost:3000>
 
-### Vagrant
-
-1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and
-   [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-2. Run `git clone https://github.com/juice-shop/juice-shop.git` (or
-   clone [your own fork](https://github.com/juice-shop/juice-shop/fork)
-   of the repository)
-3. Run `cd vagrant && vagrant up`
-4. Browse to [192.168.56.110](http://192.168.56.110)
-
 ## Demo
 
 Feel free to have a look at the latest version of OWASP Juice Shop:
