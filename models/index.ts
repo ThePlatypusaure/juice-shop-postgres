@@ -26,16 +26,20 @@ import { WalletModelInit } from './wallet'
 import { Sequelize, Transaction } from 'sequelize'
 
 /* jslint node: true */
-const sequelize = new Sequelize('database', 'username', 'password', {
-  dialect: 'sqlite',
+const dbUrl = process.env.DATABASE_URL || 'postgres://postgres:asd123@localhost:5432/mydb'
+const sequelize = new Sequelize(dbUrl, {
+  dialect: 'postgres',
+  quoteIdentifiers:  false,
+  define: {
+    freezeTableName: false
+  },
   retry: {
-    match: [/SQLITE_BUSY/],
-    name: 'query',
-    max: 5
+    match: [/Deadlock/i],  // Postgres retry on deadlock
+    name:  'query',
+    max:   5
   },
   transactionType: Transaction.TYPES.IMMEDIATE,
-  storage: 'data/juiceshop.sqlite',
-  logging: false
+  logging:         false
 })
 AddressModelInit(sequelize)
 BasketModelInit(sequelize)
