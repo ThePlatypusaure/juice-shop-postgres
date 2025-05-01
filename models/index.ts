@@ -33,7 +33,7 @@ const dbHost = process.env.DB_HOST || 'localhost';
 const dbPort = process.env.DB_PORT || '5432';
 const dbName = process.env.DB_NAME || 'mydb';
 
-const dbUrl = process.env.DATABASE_URL || `${dbType}://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
+const dbUrl = process.env.DB_URL || `${dbType}://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
 const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
   quoteIdentifiers:  false,

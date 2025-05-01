@@ -26,7 +26,6 @@ For a detailed introduction, full list of features and architecture overview ple
 
 - [Setup](#setup)
     - [From Sources](#from-sources)
-    - [Vagrant](#vagrant)
 - [Demo](#demo)
 - [Documentation](#documentation)
     - [Node.js version compatibility](#nodejs-version-compatibility)
@@ -49,18 +48,28 @@ For a detailed introduction, full list of features and architecture overview ple
 1. Install [node.js](#nodejs-version-compatibility)
 2. Run `git clone https://github.com/ThePlatypusaure/juice-shop-postgres.git --depth 1`
 3. Go into the cloned folder with `cd juice-shop-postgres`
-5. Export your database variables with 
-   ```bash
-   export DB_TYPE="postgres"
-   export DB_USER="postgres"
-   export DB_PASSWORD="asd123"
-   export DB_HOST="localhost"
-   export DB_PORT="5432"
-   export DB_NAME="mydb"
-   ```
+5. Export your database variables (if the two methods are used the DB_URL will be used) 
+  ```bash
+  export DB_URL="postgres://postgres:asd123@localhost:5432/mydb"
+  # or
+  export DB_TYPE="postgres"
+  export DB_USER="postgres"
+  export DB_PASSWORD="asd123"
+  export DB_HOST="localhost"
+  export DB_PORT="5432"
+  export DB_NAME="mydb"
+  ```
 4. Run `npm install` (only has to be done before first start or when you change the source code)
 5. Run `npm start`
 6. Browse to <http://localhost:3000>
+
+### Docker Container
+1. Install [Docker](https://www.docker.com)
+2. Run `docker pull platypusaure/juice-shop-postgres`
+3. Run `docker run --env DB_URL="postgres://postgres:asd123@localhost:5432/mydb" --rm -p 127.0.0.1:3000:3000 platypusaure/juice-shop`
+4. Browse to <http://localhost:3000> (on macOS and Windows browse to
+   <http://192.168.99.100:3000> if you are using docker-machine instead of the native docker installation)
+
 
 ## Demo
 
